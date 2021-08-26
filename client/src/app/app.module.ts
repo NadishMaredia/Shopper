@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { AdminGuard } from './admin.guard';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductService } from './product.service';
 
 @NgModule({
   declarations: [
@@ -30,19 +33,22 @@ import { AdminGuard } from './admin.guard';
     ProductsComponent,
     ShoppingCartComponent,
     AdminProductsComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule
   ],
   providers: [
     AuthService,
     AuthGuard,
-    AdminGuard
+    AdminGuard,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
