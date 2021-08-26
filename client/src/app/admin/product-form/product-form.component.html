@@ -82,7 +82,9 @@
                 </div>
               </div>
             </div>
-            <button [disabled]="productForm.form.invalid" class="btn btn-primary" (click)="saveProduct()">Save</button>
+            <button *ngIf="!editMode" [disabled]="productForm.form.invalid" class="btn btn-primary" (click)="saveProduct()">Save</button>
+            <button *ngIf="editMode" [disabled]="productForm.form.invalid" class="btn btn-success" (click)="editProduct()">Update</button>
+            <button *ngIf="editMode" [disabled]="productForm.form.invalid" class="btn btn-danger" (click)="deleteProduct()">Delete</button>
           </form>
           
     </div>

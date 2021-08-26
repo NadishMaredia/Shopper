@@ -28,5 +28,29 @@ namespace API.Controllers
         {
             return await _product.AddProduct(productDto);
         }
+
+        [HttpGet("{id}")]
+        public async Task<Product> GetProductById(int id)
+        {
+            var product = await _product.GetProductById(id);
+
+            return product;
+        }
+
+        [HttpPut("update")]
+        public async Task<ActionResult<Product>> UpdateProduct(Product product)
+        {
+            var productUpdated = await _product.UpdateProduct(product);
+
+            if (productUpdated.Id == 0) return NotFound();
+
+            return productUpdated;
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<string> DeleteProduct(int id)
+        {
+            return await _product.DeleteProduct(id);
+        }
     }
 }

@@ -9,5 +9,11 @@ namespace API.Interfaces
     {
         Task<string> AddProduct(ProductDto productDto);
         Task<IEnumerable<Product>> GetAllProducts();
+
+        Task<Product> GetProductById(int id);
+
+        Task<Product> UpdateProduct(Product product);
+
+        Task<string> DeleteProduct(int id);
     }
 }
