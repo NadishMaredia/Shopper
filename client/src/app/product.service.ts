@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProduct() {
-    return this.http.get(this.baseUrl);
+    return this.http.get<any[]>(this.baseUrl);
   }
 
   addProduct(model: any) {
