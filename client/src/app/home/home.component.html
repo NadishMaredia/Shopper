@@ -1,1 +1,32 @@
-<p>home works!</p>
+<div class="row">
+  <div class="col-3">
+    <div class="list-group sticky-top" style="top:80px;">
+      <a class="list-group-item">Categories</a>
+      <a
+        *ngFor="let item of categories"
+        routerLink="/"
+        [queryParams]="{category: item}"
+        class="list-group-item list-group-item-action"
+        [class.active]="category === item"
+        >{{ item }}</a
+      >
+    </div>
+  </div>
+  <div class="col">
+    <div class="row">
+      <ng-container *ngFor="let product of filteredProducts; let i = index">
+        <div class="col">
+          <div class="card" style="width: 15rem; margin-bottom: 20px">
+            <img src="{{ product.imageUrl }}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">${{ product.price }}</p>
+              <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
