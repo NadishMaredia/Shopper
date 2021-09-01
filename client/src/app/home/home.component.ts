@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   products: any[] = [];
   filteredProducts: any[];
   category: string;
+  cartItems = [];
 
   constructor(private productService: ProductService, 
     private route: ActivatedRoute) {
@@ -33,6 +34,43 @@ export class HomeComponent implements OnInit {
         this.products = response;
         this.filteredProducts = this.products;
       })
+  }
+
+  addToCart(product) {
+    if(this.cartItems.length == 0) {
+      let obj = {
+        id: product.id,
+        title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        qty: 1
+      };
+
+      this.cartItems.push(obj);
+    } else {
+      var result = false;
+      for(var i = 0;i<this.cartItems.length;i++) {
+        if (this.cartItems[i].id === product.id) {
+          result = true;
+          this.cartItems[i].qty += 1;
+          break;
+        }
+      }
+
+      if (!result) { 
+        let obj = {
+          id: product.id,
+          title: product.title,
+          imageUrl: product.imageUrl,
+          price: product.price,
+          qty: 1
+        };
+  
+        this.cartItems.push(obj);
+      }
+    }
+
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
   }
 
 }
