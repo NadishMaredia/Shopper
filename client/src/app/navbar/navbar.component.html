@@ -18,7 +18,7 @@
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/shopping-cart">Shopping Cart</a>
+            <a class="nav-link" routerLink="/shopping-cart">Shopping Cart <span class="badge-warning badge-pill">{{this.cartService.getTotalCartItems()}}</span></a>
           </li>
           <li *ngIf="currentUser" ngbDropdown class="nav-item dropdown">
             <a ngbDropdownToggle class="nav-link dropdown-toggle"> {{currentUser.username}}

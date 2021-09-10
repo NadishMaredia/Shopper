@@ -10,11 +10,24 @@ import { CartService } from '../cart.service';
 export class ProductCardComponent {
 
   @Input() product: any = {};
-  cartItems = [];
+  showActions = true;
 
   constructor(private cartService: CartService) { }
 
   addToCart(product) {
     this.cartService.addToCart(product);
+    this.showActions = false;
+  }
+
+  getQty(id) {
+    return this.cartService.getQty(id);
+  }
+
+  removeFromCart(product) {
+    if(this.getQty(product.id) === 1) {
+      this.showActions = true;
+    }
+
+    this.cartService.removeFromCart(product);
   }
 }

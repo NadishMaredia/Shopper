@@ -3,6 +3,17 @@
     <div class="card-body">
       <h5 class="card-title">{{ product.title }}</h5>
       <p class="card-text">${{ product.price }}</p>
-      <a (click)="addToCart(product)" class="btn btn-primary btn-block">Add to cart</a>
+      <a *ngIf="showActions" (click)="addToCart(product)" class="btn btn-primary btn-block">Add to cart</a>
+      <div *ngIf="!showActions" class="row no-gutters">
+        <div class="col-2">
+          <button class="btn btn-secondary btn-block" (click)="removeFromCart(product)">-</button>
+        </div>
+        <div class="col text-center">
+          {{ getQty(product.id) }} in cart
+        </div>
+        <div class="col-2">
+          <button class="btn btn-secondary btn-block" (click)="addToCart(product)">+</button>
+        </div>
+      </div>
     </div>
   </div>

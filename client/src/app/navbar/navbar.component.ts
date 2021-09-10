@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { CartService } from '../cart.service';
 import { LoginModel } from '../models/auth';
 
 @Component({
@@ -13,11 +14,10 @@ export class NavbarComponent implements OnInit {
   model: any = {};
   currentUser: any;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, public cartService: CartService) {
     this.fetchUser();
    }
 
-   //a
   ngOnInit(): void {
   }
 
