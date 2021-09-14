@@ -1,1 +1,33 @@
-<p>shopping-cart works!</p>
+<h1>Shopping Cart</h1>
+<ng-container>
+    <p>
+        You have {{ this.cartItem }} items in your shopping cart.
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of cart">
+                <td>{{c.title}}</td>
+                <td>{{c.qty}}</td>
+                <td>{{c.price}}</td>
+                <th>{{c.price * c.qty | currency: 'USD':true}}</th>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>{{this.totalBill | currency: 'USD':true}}</th>
+            </tr>
+        </tfoot>
+    </table>
+    <button class="btn btn-danger" (click)="clearCart()">Clear Shopping Cart</button>
+</ng-container>

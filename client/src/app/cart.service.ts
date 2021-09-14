@@ -88,4 +88,11 @@ export class CartService {
     let totalCount = localStorage.getItem('cartItems');
     return totalCount;
   }
+
+  clearCart() {
+    localStorage.removeItem('cart');
+    localStorage.removeItem('cartItems');
+    this.cartItems = [];
+    this.itemCount = 0;
+  }
 }
