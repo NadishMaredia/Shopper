@@ -6,6 +6,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>Product</th>
                 <th>Quantity</th>
                 <th>Price</th>
@@ -14,6 +15,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let c of cart">
+                <td><div [style.backgroundImage]="'url(' +c.imageUrl +')'" class="thumbnail"></div></td>
                 <td>{{c.title}}</td>
                 <td>{{c.qty}}</td>
                 <td>{{c.price}}</td>
@@ -22,6 +24,7 @@
         </tbody>
         <tfoot>
             <tr>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
